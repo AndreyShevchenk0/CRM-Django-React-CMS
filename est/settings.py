@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'realtors',
     'listings',
+    'contacts',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +87,23 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'realest_estate',
+#         'USER': 'postgres',
+#         'PASSWORD': '[YOUR POSTGRES DATABASE PASSWORD]',
+#         'HOST': 'localhost'
+#     }
+# }
+#
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = '[YOUR EMAIL]'
+# EMAIL_HOST_PASSWORD = '[YOUR APP PASSWORD]'
+# EMAIL_USE_TLS = True
 
 
 # Password validation
