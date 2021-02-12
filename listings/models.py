@@ -5,29 +5,29 @@ from realtors.models import Realtor
 
 class Listing(models.Model):
     class SaleType(models.TextChoices):
-        FOR_SALE = 'For Sale'
-        FOR_RENT = 'For Rent'
+        FOR_SALE = 'Продаж'
+        FOR_RENT = 'Аренда'
 
     class HomeType(models.TextChoices):
         HOUSE = 'House'
         CONDO = 'Condo'
         TOWNHOUSE = 'Townhouse'
 
-    realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
-    slug = models.CharField(max_length=200, unique=True)
-    title = models.CharField(max_length=150)
-    address = models.CharField(max_length=150)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=15)
-    description = models.TextField(blank=True)
-    sale_type = models.CharField(max_length=50, choices=SaleType.choices, default=SaleType.FOR_SALE)
-    price = models.IntegerField()
-    bedrooms = models.IntegerField()
-    bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
-    home_type = models.CharField(max_length=50, choices=HomeType.choices, default=HomeType.HOUSE)
-    sqft = models.IntegerField()
-    open_house = models.BooleanField(default=False)
+    realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING, verbose_name='Имя риелтора')
+    slug = models.CharField(max_length=200, unique=True, verbose_name='Слаг')
+    title = models.CharField(max_length=150, verbose_name='Заголовок')
+    address = models.CharField(max_length=150, verbose_name='Адреса')
+    city = models.CharField(max_length=100, verbose_name='Місто')
+    state = models.CharField(max_length=100, verbose_name='Область')
+    zipcode = models.CharField(max_length=15, verbose_name='Код')
+    description = models.TextField(blank=True, verbose_name='Опис')
+    sale_type = models.CharField(max_length=50, choices=SaleType.choices, default=SaleType.FOR_SALE, verbose_name='Тип')
+    price = models.IntegerField(verbose_name='Ціна')
+    bedrooms = models.IntegerField(verbose_name='Кімнат')
+    bathrooms = models.DecimalField(max_digits=2, decimal_places=1, verbose_name='Санвузол')
+    home_type = models.CharField(max_length=50, choices=HomeType.choices, default=HomeType.HOUSE, verbose_name='Тип')
+    sqft = models.IntegerField(verbose_name='Мін ціна')
+    open_house = models.BooleanField(default=False, verbose_name='Відкритий')
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -51,6 +51,10 @@ class Listing(models.Model):
     photo_20 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=now, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Оголошення'
+        verbose_name = 'Оголошення'
 
     def __str__(self):
         return self.title
