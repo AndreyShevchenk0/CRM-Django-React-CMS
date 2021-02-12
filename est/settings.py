@@ -61,8 +61,6 @@ ROOT_URLCONF = 'est.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #'DIRS': [],
-        #'DIRS': [os.path.join(BASE_DIR, 'build')],
         'DIRS': [BASE_DIR, 'mainapp-ui/build'],
         'APP_DIRS': True,
         'OPTIONS': {
